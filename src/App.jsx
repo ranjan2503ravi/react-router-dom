@@ -1,32 +1,21 @@
-import React from 'react'
-import Layout from './Layout'
-import Home from './Component/Home/Home'
-import About from './Component/About/About'
-import Contact from './Component/Contact/Contact'
-import { createBrowserRouter, createRoutesFromElements,Route, RouterProvider } from 'react-router-dom'
-import Params from './Params/Params';
-import Course from './Component/About/Course/Course';
-import Mocetest from './Component/About/Mocetest/Mocetest';
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
-      <Route path='' element={<Home/> } />
-      <Route path='about' element={<About />}>
-        <Route path='course' element={<Course/> } />
-        <Route path='mocetest' element={<Mocetest/> } />
-      </Route>
-      <Route path='contact' element={<Contact />} />
-      <Route path='/user/:id' element={<Params/>} />
-      
-    </Route>
-  )
-)
-const App = () => {
-  return (
-    <div>
-      <RouterProvider router={ router} />
-    </div>
-  )
-}
+// App.jsx
+import React, { useState } from "react";
+import Card from "./Component/Card";
 
-export default App
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const addValue = () => setCount(count + 1);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Card addValue={addValue} name="Click Me">
+        <p className="text-lg font-semibold text-gray-700 mt-3">
+          Count : <span className="text-blue-600">{count}</span>
+        </p>
+      </Card>
+    </div>
+  );
+};
+
+export default App;
